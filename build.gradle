@@ -190,11 +190,16 @@ idea {
 }
 
 
+def productionJar = tasks.named("jar", Jar).flatMap { it.archiveFile }
+def expectedProductionModId = mod_id.toString()
+
 def verifyProductionJar = tasks.register("verifyProductionJar") {
     dependsOn tasks.named("jar")
+    inputs.file(productionJar)
+    inputs.property("expectedProductionModId", expectedProductionModId)
 
     doLast {
-        def jarFile = tasks.named("jar", Jar).get().archiveFile.get().asFile
+        def jarFile = productionJar.get().asFile
         def forbiddenEntries = []
 
         new java.util.zip.ZipFile(jarFile).withCloseable { zip ->
@@ -212,8 +217,10 @@ def verifyProductionJar = tasks.register("verifyProductionJar") {
             }
 
             def metadataText = zip.getInputStream(modMetadata).getText("UTF-8")
-            if (!metadataText.contains("modId=\"${project.mod_id}\"")) {
-                throw new GradleException("Production JAR metadata does not declare mod id '${project.mod_id}'")
+            if (!metadataText.contains("modId=\"${expectedProductionModId}\"")) {
+                throw new GradleException(
+                        "Production JAR metadata does not declare mod id '${expectedProductionModId}'"
+                )
             }
             if (metadataText.contains("examplemod")) {
                 throw new GradleException("Production JAR metadata still contains the NeoForge MDK examplemod id")
