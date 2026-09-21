@@ -117,12 +117,21 @@ The larger performance consideration is intentional gameplay behavior: every con
 
 This is a NeoForge ModDevGradle project and intentionally does **not** compile against Torchmaster Java classes. The integration resolves the target block through Minecraft's registry by the verified ID `torchmaster:feral_flare_lantern`, reducing binary API coupling.
 
-The included `gradle-wrapper.properties` matches the official NeoForge 1.21.1 ModDevGradle MDK and targets Gradle 9.2.1. This source package does not include the generated Gradle wrapper JAR/scripts. Either:
+The repository includes the standard Gradle wrapper from the NeoForge MDK and targets Gradle 9.2.1.
 
-1. open the project in an IDE/environment with Gradle available and run `gradle wrapper`, then `./gradlew build` (`gradlew.bat build` on Windows), or
-2. copy the standard wrapper files from the official `MDK-1.21.1-ModDevGradle` template into this project and run the wrapper build.
+Build on Linux/macOS:
 
-The output JAR will be under `build/libs/`.
+```bash
+bash ./gradlew build
+```
+
+Build on Windows:
+
+```powershell
+.\gradlew.bat build
+```
+
+The output JAR will be under `build/libs/`. GitHub Actions also runs the Gradle build on pushes and pull requests.
 
 ## Implementation map
 
