@@ -29,6 +29,12 @@
 - A Java 21 parser pass found no parser/syntax diagnostics. Missing Minecraft/NeoForge classes are expected because the sandbox does not contain the Gradle-resolved development classpath.
 - No stale references to the abandoned `DistExecutor`/old client-payload approach remain.
 
-## Not claimed
+## Gradle integration validation
 
-This package has **not** been Gradle-compiled or launched inside this sandbox. The sandbox has no Gradle installation, no pre-populated NeoForge/Minecraft Gradle dependency cache, and no direct dependency-download access. A real local `gradlew build` and game launch remain the final integration checks.
+GitHub Actions successfully completed the repository's full NeoForge 1.21.1 Gradle build using Java 21 and the checked-in Gradle wrapper. The successful run executed `compileJava`, resource processing, JAR assembly, and the `build` lifecycle task against the resolved Minecraft/NeoForge development classpath.
+
+The implementation has therefore moved beyond parser/static validation: it is compile-verified against the configured NeoForge 21.1.251 toolchain.
+
+## Not yet claimed
+
+A successful build does not replace an in-game integration test. Singleplayer and dedicated-server launch tests with Torchmaster installed, new-chunk generation, the first-load migration prompt, and player-placement protection should still be exercised before calling version 1.0.0 release-tested.
