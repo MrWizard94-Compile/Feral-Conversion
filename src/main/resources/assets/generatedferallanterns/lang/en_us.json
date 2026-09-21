@@ -1,0 +1,13 @@
+{
+  "screen.generatedferallanterns.migration.title": "Generated Feral Lanterns",
+  "screen.generatedferallanterns.migration.heading": "Existing Chunk Migration",
+  "screen.generatedferallanterns.migration.body": "Newly generated chunks automatically replace generated lanterns with Torchmaster Feral Flare Lanterns. Normal runtime lantern placements are tracked and excluded from conversion.",
+  "screen.generatedferallanterns.migration.warning": "For lanterns that already existed before this mod was installed, Minecraft did not record whether they were generated or player-placed. Choosing conversion can therefore replace pre-install player-built lanterns.",
+  "screen.generatedferallanterns.migration.backup": "Back up this world before converting existing chunks.",
+  "screen.generatedferallanterns.migration.convert": "Convert Existing Lanterns",
+  "screen.generatedferallanterns.migration.new_only": "New Chunks Only",
+  "message.generatedferallanterns.migration.not_authorized": "Only the singleplayer world owner or a server operator can choose the lantern migration mode.",
+  "message.generatedferallanterns.migration.already_decided": "The existing-world lantern migration choice has already been made for this world.",
+  "message.generatedferallanterns.migration.accepted": "Existing-world lantern migration enabled. Old chunks will be converted incrementally as they are loaded.",
+  "message.generatedferallanterns.migration.declined": "Existing chunks will remain unchanged. Only newly generated chunks will be converted."
+}
