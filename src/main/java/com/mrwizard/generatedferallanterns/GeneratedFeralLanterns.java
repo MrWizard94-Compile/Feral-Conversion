@@ -13,8 +13,8 @@ import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.inventory.MenuType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.NeoForge;
 import net.neoforged.neoforge.attachment.AttachmentType;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStoppedEvent;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
@@ -49,7 +49,7 @@ public final class GeneratedFeralLanterns {
 
     public static final Supplier<AttachmentType<HashSet<Long>>> RUNTIME_PLACED_PROTECTED = ATTACHMENTS.register(
             "runtime_placed_protected",
-            () -> AttachmentType.<HashSet<Long>>builder(HashSet::new)
+            () -> AttachmentType.<HashSet<Long>>builder(() -> new HashSet<Long>())
                     .serialize(PROTECTED_POSITIONS_CODEC)
                     .build()
     );
